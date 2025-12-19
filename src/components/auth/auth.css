@@ -1,0 +1,230 @@
+.login-wrapper {
+    color: #c9d1d9;
+    min-height: 100vh;
+    width: 100vw;
+    font-family: "Asap", sans-serif;
+    background: #0d1117;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .login-logo-container {
+    padding: 40px 0px 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeInDown 0.6s ease;
+  }
+  
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .logo-login {
+    width: 64px;
+    height: 64px;
+    filter: drop-shadow(0 4px 12px rgba(52, 152, 219, 0.3));
+    transition: transform 0.3s ease;
+  }
+  
+  .logo-login:hover {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  .login-box-wrapper {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 24px;
+    animation: fadeInUp 0.6s ease;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .login-box {
+    padding: 32px 24px;
+    width: 400px;
+    min-height: 300px;
+    border-radius: 6px;
+    background: #161b22;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid #30363d;
+  }
+  
+  .input {
+    width: 100%;
+    min-width: 300px;
+    height: 32px;
+    background: #0d1117;
+    border-radius: 6px;
+    padding: 5px 12px;
+    border: 1px solid #30363d;
+    font-size: 14px;
+    color: #c9d1d9;
+    transition: all 0.2s cubic-bezier(0.25, 0.01, 0.25, 1);
+    box-sizing: border-box;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #c9d1d9;
+  }
+  
+  .input:hover {
+    border-color: #8b949e;
+  }
+  
+  .input:focus {
+    outline: none;
+    border-color: #58a6ff;
+    background: #0d1117;
+  }
+  
+  .submit-btn,
+  .login-btn {
+    background: #238636;
+    border: 1px solid #2ea043;
+    width: 100%;
+    min-width: 300px;
+    border-radius: 6px;
+    height: 32px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 5px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+  
+  .submit-btn:hover,
+  .login-btn:hover {
+    background: #2ea043;
+  }
+  
+  .submit-btn:active,
+  .login-btn:active {
+    background: #2ea043;
+  }
+  
+  .submit-btn:disabled,
+  .login-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .pass-box {
+    margin-top: 16px;
+    text-align: center;
+  }
+  
+  .pass-box p {
+    color: #8b949e;
+    font-size: 12px;
+  }
+  
+  .pass-box a {
+    color: #58a6ff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  
+  .pass-box a:hover {
+    color: #79c0ff;
+    text-decoration: underline;
+  }
+  
+  .passkey-signin {
+    border: 2px solid rgba(52, 152, 219, 0.3);
+    width: 420px;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.02);
+    transition: all 0.3s ease;
+  }
+  
+  .passkey-signin:hover {
+    border-color: #3498db;
+    background: rgba(52, 152, 219, 0.05);
+  }
+  
+  .passkey,
+  .signup {
+    color: #2b7df7;
+    cursor: pointer;
+    /* font-size: px; */
+  }
+  
+  .login-btn {
+    width: 250px;
+  }
+  
+  .pass-box {
+    width: 364px;
+    height: auto;
+    border-radius: 10px;
+    padding: 20px 10px;
+    border: 1px solid #3d3d3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .signup-button {
+    width: 250px;
+  }
+  
+  @media screen and (max-width: 400px) {
+    .login-box {
+      width: 200px;
+    }
+  
+    .input {
+      width: 150px;
+    }
+  
+    .login-btn {
+      width: 150px;
+    }
+  
+    .pass-box {
+      width: 200px;
+    }
+  }

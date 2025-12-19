@@ -1,0 +1,220 @@
+.create-repo-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.create-repo-header {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #30363d;
+}
+
+.create-repo-header h1 {
+  color: #c9d1d9;
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.create-repo-header .subtitle {
+  color: #8b949e;
+  font-size: 16px;
+}
+
+.create-repo-form {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 24px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  color: #c9d1d9;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.required {
+  color: #f85149;
+}
+
+.optional {
+  color: #8b949e;
+  font-weight: 400;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 8px 12px;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #c9d1d9;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #58a6ff;
+  background: #0d1117;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-hint {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #8b949e;
+}
+
+.visibility-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.visibility-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: #161b22;
+  border: 2px solid #30363d;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.visibility-option:hover {
+  border-color: #58a6ff;
+  background: #0d1117;
+}
+
+.visibility-option input[type="radio"] {
+  margin-top: 4px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  accent-color: #58a6ff;
+}
+
+.visibility-content {
+  flex: 1;
+}
+
+.visibility-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.visibility-title strong {
+  color: #c9d1d9;
+  font-size: 14px;
+}
+
+.visibility-icon {
+  font-size: 18px;
+}
+
+.visibility-desc {
+  color: #8b949e;
+  font-size: 12px;
+  margin: 0;
+}
+
+.error-message {
+  padding: 12px 16px;
+  background: #3c1f1e;
+  border: 1px solid #f85149;
+  border-radius: 6px;
+  color: #f85149;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #30363d;
+}
+
+.btn-cancel,
+.btn-create {
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #30363d;
+}
+
+.btn-cancel {
+  background: transparent;
+  color: #c9d1d9;
+}
+
+.btn-cancel:hover {
+  background: #161b22;
+  border-color: #8b949e;
+}
+
+.btn-create {
+  background: #238636;
+  color: white;
+  border-color: #2ea043;
+}
+
+.btn-create:hover {
+  background: #2ea043;
+}
+
+.btn-cancel:disabled,
+.btn-create:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .create-repo-container {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .create-repo-container {
+    padding: 20px 16px;
+  }
+
+  .create-repo-header h1 {
+    font-size: 24px;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .btn-cancel,
+  .btn-create {
+    width: 100%;
+  }
+}

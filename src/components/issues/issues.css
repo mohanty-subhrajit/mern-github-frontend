@@ -1,0 +1,489 @@
+.main-layout {
+  margin-left: 260px;
+  padding-top: 60px;
+  min-height: 100vh;
+  background: #0d1117;
+  transition: margin-left 0.3s ease;
+}
+
+.issue-list-container,
+.create-issue-container,
+.issue-detail-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.issue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #30363d;
+}
+
+.issue-header h2 {
+  margin: 0;
+  color: #c9d1d9;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.btn-create-issue,
+.btn-submit {
+  background: #238636;
+  color: white;
+  border: 1px solid #2ea043;
+  padding: 5px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-create-issue:hover,
+.btn-submit:hover {
+  background: #2ea043;
+}
+
+.issue-filters {
+  display: flex;
+  gap: 0;
+  margin-bottom: 16px;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.issue-filters button {
+  flex: 1;
+  background: #0d1117;
+  border: none;
+  border-right: 1px solid #30363d;
+  color: #8b949e;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.issue-filters button:last-child {
+  border-right: none;
+}
+
+.issue-filters button.active {
+  color: #c9d1d9;
+  background: #161b22;
+  font-weight: 600;
+}
+
+.issue-filters button:hover:not(.active) {
+  background: #161b22;
+  color: #c9d1d9;
+}
+
+.issues-list {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.issue-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border-bottom: 1px solid #30363d;
+  align-items: flex-start;
+  transition: all 0.2s ease;
+}
+
+.issue-item:last-child {
+  border-bottom: none;
+}
+
+.issue-item:hover {
+  background: #161b22;
+}
+
+.issue-status {
+  font-size: 20px;
+  margin-top: 2px;
+}
+
+.issue-content {
+  flex: 1;
+}
+
+.issue-title {
+  margin: 0 0 8px 0;
+  color: #58a6ff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.issue-title:hover {
+  text-decoration: underline;
+}
+
+.issue-meta {
+  margin: 0;
+  color: #8b949e;
+  font-size: 13px;
+}
+
+.issue-labels {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.label {
+  background-color: #1f6feb;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.issue-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.status-select {
+  background: #0d1117;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.status-select:hover {
+  border-color: #8b949e;
+  background: #161b22;
+}
+
+.status-select:focus {
+  outline: none;
+  border-color: #58a6ff;
+}
+
+@media (max-width: 1024px) {
+  .main-layout {
+    margin-left: 0;
+  }
+}
+
+.btn-delete {
+  background: #da3633;
+  color: white;
+  border: 1px solid #f85149;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-delete:hover {
+  background: #f85149;
+}
+
+.btn-back {
+  background: #21262d;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+  padding: 5px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-back:hover {
+  background: #30363d;
+  border-color: #8b949e;
+}
+
+.btn-edit {
+  background: #238636;
+  color: white;
+  border: 1px solid #2ea043;
+  padding: 5px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-edit:hover {
+  background: #2ea043;
+}
+
+.btn-cancel {
+  background: transparent;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+  padding: 5px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel:hover {
+  background: #21262d;
+  border-color: #8b949e;
+}
+
+.no-issues {
+  padding: 60px 20px;
+  text-align: center;
+  color: #8b949e;
+}
+
+.no-issues button {
+  margin-top: 20px;
+  background-color: #2ea44f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 40px;
+  color: #8b949e;
+  font-size: 16px;
+}
+
+/* Create Issue Form */
+.create-issue-container,
+.issue-detail-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.create-issue-header,
+.issue-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.create-issue-header h2 {
+  color: white;
+  margin: 0;
+}
+
+.btn-back {
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-back:hover {
+  background-color: #444;
+}
+
+.issue-form {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  padding: 24px;
+  border-radius: 6px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  color: white;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #58a6ff;
+  background: #0d1117;
+}
+
+.form-group small {
+  display: block;
+  margin-top: 6px;
+  color: #8b949e;
+  font-size: 12px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.btn-cancel {
+  background-color: transparent;
+  color: white;
+  border: 1px solid #555;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-cancel:hover {
+  background-color: #333;
+}
+
+/* Issue Detail */
+.issue-detail-content {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  padding: 24px;
+  border-radius: 6px;
+}
+
+.issue-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.issue-title-row h1 {
+  color: white;
+  margin: 0;
+  font-size: 28px;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-badge.open {
+  background-color: #238636;
+  color: white;
+}
+
+.status-badge.closed {
+  background-color: #da3633;
+  color: white;
+}
+
+.issue-meta-detail {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #333;
+}
+
+.issue-meta-detail p {
+  color: #8b949e;
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.issue-labels-detail {
+  margin-bottom: 20px;
+  color: white;
+}
+
+.issue-labels-detail strong {
+  margin-right: 10px;
+}
+
+.issue-description-detail {
+  margin: 30px 0;
+}
+
+.issue-description-detail h3 {
+  color: white;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.issue-description-detail p {
+  color: #c9d1d9;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.issue-timeline {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+}
+
+.timeline-item {
+  color: #8b949e;
+  font-size: 13px;
+}
+
+.issue-actions-header {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-edit {
+  background-color: #1f6feb;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-edit:hover {
+  background-color: #1a5acc;
+}
