@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
+import API_URL from "../config/api";
 import "./Sidebar.css";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
@@ -19,7 +20,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
     try {
       const response = await axios.get(
-        `http://localhost:3002/repo/user/${userId}`,
+        `${API_URL}/repo/user/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

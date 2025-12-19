@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HeatMap from "@uiw/react-heat-map";
 import axios from "axios";
+import API_URL from "../../config/api";
 
 // GitHub-style contribution colors
 const GITHUB_COLORS = {
@@ -30,7 +31,7 @@ const HeatMapProfile = ({ userId }) => {
       try {
         // Fetch user repositories
         const repoResponse = await axios.get(
-          `http://localhost:3002/repo/user/${currentUserId}`,
+          `${API_URL}/repo/user/${currentUserId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -44,7 +45,7 @@ const HeatMapProfile = ({ userId }) => {
         const commitPromises = userRepos.map(async (repo) => {
           try {
             const response = await axios.get(
-              `http://localhost:3002/repo/${repo._id}/commits`,
+              `${API_URL}/repo/${repo._id}/commits`,
               {
                 headers: {
                   Authorization: `Bearer ${token}`,

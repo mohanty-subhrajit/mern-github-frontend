@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_URL from "../../config/api";
 import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
 import "./repository.css";
@@ -47,7 +48,7 @@ const CreateRepository = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3002/repo/create",
+        `${API_URL}/repo/create`,
         {
           owner: userId,
           name: formData.name.trim(),
