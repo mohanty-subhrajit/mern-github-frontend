@@ -6,7 +6,7 @@ frontend:
         - npm ci
     build:
       commands:
-        - echo "VITE_API_URL=$VITE_API_URL" >> .env
+        - echo "VITE_API_URL=https://lapgit.duckdns.org" >> .env
         - npm run build
   artifacts:
     baseDirectory: dist
