@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import API_URL from '../../config/api';
 import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
 import "./commits.css";
@@ -24,7 +25,7 @@ const CommitHistory = () => {
     try {
       // Fetch repository details
       const repoResponse = await axios.get(
-        `http://localhost:3002/repo/${repoId}`,
+        `${API_URL}/repo/${repoId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -33,7 +34,7 @@ const CommitHistory = () => {
 
       // Fetch commits
       const commitsResponse = await axios.get(
-        `http://localhost:3002/repo/${repoId}/commits`,
+        `${API_URL}/repo/${repoId}/commits`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

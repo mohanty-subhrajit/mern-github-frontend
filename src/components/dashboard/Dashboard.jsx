@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import API_URL from '../../config/api';
 import "./dashboard.css";
 import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
@@ -25,7 +26,7 @@ const Dashboard = () => {
     const fetchRepositories = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3002/repo/user/${userId}`,
+          `${API_URL}/repo/user/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -41,7 +42,7 @@ const Dashboard = () => {
 
     const fetchSuggestedRepositories = async () => {
       try {
-        const response = await fetch(`http://localhost:3002/repo/all`);
+        const response = await fetch(`${API_URL}/repo/all`);
         const data = await response.json();
         setSuggestedRepositories(data || []);
       } catch (err) {
@@ -52,7 +53,7 @@ const Dashboard = () => {
     const fetchStarredRepos = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3002/starred/${userId}`,
+          `${API_URL}/starred/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -88,7 +89,7 @@ const Dashboard = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3002/star/${userId}/${repoId}`,
+        `${API_URL}/star/${userId}/${repoId}`,
         {},
         {
           headers: {
@@ -116,7 +117,7 @@ const Dashboard = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:3002/repo/search?query=${publicSearchQuery}`
+        `${API_URL}/repo/search?query=${publicSearchQuery}`
       );
       setPublicSearchResults(response.data);
     } catch (err) {

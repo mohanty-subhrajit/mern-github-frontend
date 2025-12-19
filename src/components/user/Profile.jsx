@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_URL from '../../config/api';
 import "./profile.css";
 import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
@@ -31,7 +32,7 @@ const Profile = () => {
       if (userId) {
         try {
           const response = await axios.get(
-            `http://localhost:3002/userProfile/${userId}`,
+            `${API_URL}/userProfile/${userId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -51,7 +52,7 @@ const Profile = () => {
 
       try {
         const response = await axios.get(
-          `http://localhost:3002/starred/${userId}`,
+          `${API_URL}/starred/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -70,7 +71,7 @@ const Profile = () => {
 
       try {
         const response = await axios.get(
-          `http://localhost:3002/connections/${userId}`,
+          `${API_URL}/connections/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

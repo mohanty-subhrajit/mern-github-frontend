@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_URL from '../../config/api';
 import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
 import "./commits.css";
@@ -24,7 +25,7 @@ const CommitDetail = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:3002/commit/${commitId}`,
+        `${API_URL}/commit/${commitId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

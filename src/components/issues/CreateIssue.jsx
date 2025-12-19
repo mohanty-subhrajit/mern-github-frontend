@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import API_URL from '../../config/api';
 import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
 import "./issues.css";
@@ -44,7 +45,7 @@ const CreateIssue = () => {
         : [];
 
       const response = await axios.post(
-        `http://localhost:3002/issue/create/${repoId}`,
+        `${API_URL}/issue/create/${repoId}`,
         {
           title: formData.title,
           description: formData.description,

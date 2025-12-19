@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import API_URL from '../../config/api';
 import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
 import "./issues.css";
@@ -31,7 +32,7 @@ const IssueDetail = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.get(
-        `http://localhost:3002/issue/${issueId}`,
+        `${API_URL}/issue/${issueId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -70,7 +71,7 @@ const IssueDetail = () => {
         : [];
 
       await axios.put(
-        `http://localhost:3002/issue/update/${issueId}`,
+        `${API_URL}/issue/update/${issueId}`,
         {
           title: formData.title,
           description: formData.description,
@@ -98,7 +99,7 @@ const IssueDetail = () => {
 
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`http://localhost:3002/issue/delete/${issueId}`, {
+      await axios.delete(`${API_URL}/issue/delete/${issueId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

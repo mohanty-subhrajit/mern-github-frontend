@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import API_URL from '../../config/api';
 import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
 import "./dashboard.css";
@@ -24,7 +25,7 @@ const Starred = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `http://localhost:3002/starred/${userId}`,
+        `${API_URL}/starred/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -45,7 +46,7 @@ const Starred = () => {
 
     try {
       await axios.post(
-        `http://localhost:3002/star/${userId}/${repoId}`,
+        `${API_URL}/star/${userId}/${repoId}`,
         {},
         {
           headers: {
