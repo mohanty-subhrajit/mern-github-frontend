@@ -22,10 +22,14 @@ const Navbar = ({ toggleSidebar }) => {
         </Link>
       </div>
       <div className="nav-right">
-        <Link to="/create-repository">
-          <p>Create a Repository</p>
+        <Link to="/starred" className="nav-link">
+          <span className="nav-icon">⭐</span>
+          <p>Starred</p>
         </Link>
-        <Link to="/profile">
+        <Link to="/create-repository" className="nav-link">
+          <p>Create Repository</p>
+        </Link>
+        <Link to="/profile" className="nav-link">
           <p>Profile</p>
         </Link>
       </div>

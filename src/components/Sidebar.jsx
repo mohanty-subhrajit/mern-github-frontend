@@ -45,53 +45,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           </button>
         </div>
 
-        <div className="sidebar-section">
-          <h3 className="sidebar-title">Navigation</h3>
-          <nav className="sidebar-nav">
-            <Link
-              to="/"
-              className={`sidebar-link ${isActive("/") ? "active" : ""}`}
-              onClick={toggleSidebar}
-            >
-              <span className="icon">🏠</span>
-              <span>Dashboard</span>
-            </Link>
-            <Link
-              to="/profile"
-              className={`sidebar-link ${isActive("/profile") ? "active" : ""}`}
-              onClick={toggleSidebar}
-            >
-              <span className="icon">👤</span>
-              <span>Profile</span>
-            </Link>
-            <Link
-              to="/repositories"
-              className={`sidebar-link ${isActive("/repositories") ? "active" : ""}`}
-              onClick={toggleSidebar}
-            >
-              <span className="icon">📦</span>
-              <span>Repositories</span>
-            </Link>
-            <Link
-              to="/starred"
-              className={`sidebar-link ${isActive("/starred") ? "active" : ""}`}
-              onClick={toggleSidebar}
-            >
-              <span className="icon">⭐</span>
-              <span>Starred</span>
-            </Link>
-          </nav>
-        </div>
-
-        <div className="sidebar-section">
+        <div className="sidebar-section sidebar-section-full">
           <h3 className="sidebar-title">Recent Repositories</h3>
-          <div className="sidebar-search">
-            <input
-              type="text"
-              placeholder="Find a repository..."
-              className="sidebar-search-input"
-            />
-          </div>
           <div className="recent-repos">
             {recentRepos.length === 0 ? (
               <p className="no-repos">No repositories yet</p>

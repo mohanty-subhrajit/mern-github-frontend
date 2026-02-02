@@ -22,7 +22,30 @@ nav {
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.nav-link:hover {
+  background: #21262d;
+}
+
+.nav-link p {
+  margin: 0;
+}
+
+.nav-icon {
+  font-size: 16px;
+  line-height: 1;
 }
 
 .nav-brand {
@@ -95,9 +118,12 @@ nav h3 {
 }
 
 nav p {
-  font-weight: 600;
+  font-weight: 500;
   color: #c9d1d9;
   font-size: 14px;
+  margin: 0;
+  white-space: nowrap;
+}
   padding: 8px 16px;
   border-radius: 6px;
   transition: all 0.2s ease;
