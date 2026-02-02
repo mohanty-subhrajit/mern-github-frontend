@@ -115,7 +115,7 @@ const RepositoryBrowser = () => {
       <Navbar toggleSidebar={toggleSidebar} />
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
       <div className="main-layout">
-        <div cerror ? (
+        {error ? (
             <div className="error-state">
               <div className="error-icon">⚠️</div>
               <h2>Unable to Load Repository</h2>
@@ -124,7 +124,8 @@ const RepositoryBrowser = () => {
                 🔄 Retry
               </button>
             </div>
-          ) : lassName="repo-browser-container">
+          ) : (
+          <div className="repo-browser-container">
           {loading ? (
             <div className="loading">Loading repository...</div>
           ) : (
@@ -200,7 +201,14 @@ const RepositoryBrowser = () => {
                   {selectedFile ? (
                     <>
                       <div className="content-header">
-                        <h3>
+                        <h3>{selectedFile}</h3>
+                        <button
+                          className="close-btn"
+                          onClick={() => setSelectedFile(null)}
+                        >
+                          ✕
+                        </button>
+                      </div>
                       {fileLoading ? (
                         <div className="file-loading">
                           <div className="spinner"></div>
@@ -210,16 +218,7 @@ const RepositoryBrowser = () => {
                         <pre className="code-viewer">
                           <code>{fileContent}</code>
                         </pre>
-                      )}ton
-                          className="close-btn"
-                          onClick={() => setSelectedFile(null)}
-                        >
-                          ✕
-                        </button>
-                      </div>
-                      <pre className="code-viewer">
-                        <code>{fileContent}</code>
-                      </pre>
+                      )}
                     </>
                   ) : readme ? (
                     <>
@@ -241,7 +240,8 @@ const RepositoryBrowser = () => {
               </div>
             </>
           )}
-        </div>
+          </div>
+        )}
       </div>
     </>
   );
