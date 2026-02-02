@@ -77,6 +77,8 @@
 .repos-section,
 .search-section {
   width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
 }
 
 .suggested-section h3,
@@ -93,6 +95,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .repos-list {
@@ -100,16 +104,21 @@
   flex-direction: column;
   gap: 12px;
   margin-top: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Suggested Repo Cards */
 .suggested-repo-card {
-  margin-bottom: 12px;
-  padding: 12px;
+  padding: 16px;
   background: #0d1117;
   border: 1px solid #30363d;
   border-radius: 6px;
   transition: all 0.2s ease;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 150px;
 }
 
 .suggested-repo-card:hover {
@@ -119,16 +128,19 @@
 
 .repo-title {
   color: #58a6ff;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
-  margin-bottom: 4px;
+  margin: 0 0 8px 0;
+  word-wrap: break-word;
 }
 
 .repo-desc {
-  font-size: 12px;
+  font-size: 13px;
   color: #8b949e;
-  margin-bottom: 8px;
+  margin: 0 0 12px 0;
   line-height: 1.5;
+  word-wrap: break-word;
+  flex-grow: 1;
 }
 
 .btn-star, .btn-starred {
@@ -163,7 +175,6 @@
 
 /* User Repo Cards */
 .user-repo-card {
-  margin-bottom: 16px;
   padding: 16px;
   background: #0d1117;
   border: 1px solid #30363d;
@@ -172,6 +183,8 @@
   justify-content: space-between;
   align-items: center;
   transition: all 0.2s ease;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .user-repo-card:hover {
@@ -311,6 +324,9 @@
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(52, 152, 219, 0.3) transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .search-results::-webkit-scrollbar {
@@ -331,12 +347,13 @@
 }
 
 .search-result-card {
-  margin-bottom: 8px;
   padding: 12px;
   background: #0d1117;
   border: 1px solid #30363d;
   border-radius: 6px;
   transition: all 0.2s ease;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .search-result-card:hover {
@@ -392,6 +409,18 @@
 
   .suggested-repos-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .user-repo-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .repo-actions {
+    width: 100%;
+    justify-content: flex-start;
   }
 }
 
