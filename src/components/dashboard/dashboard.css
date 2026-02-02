@@ -249,6 +249,43 @@
   border-color: #f0b72f;
 }
 
+/* Delete Button */
+.btn-delete {
+  padding: 5px 12px;
+  background: #21262d;
+  border: 1px solid #da3633;
+  color: #da3633;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-delete:hover {
+  background: #da3633;
+  color: white;
+  border-color: #da3633;
+}
+
+.btn-delete-profile {
+  padding: 5px 12px;
+  background: #21262d;
+  border: 1px solid #da3633;
+  color: #da3633;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-delete-profile:hover {
+  background: #da3633;
+  color: white;
+  border-color: #da3633;
+}
+
 /* Empty State */
 .empty-state {
   text-align: center;
@@ -401,6 +438,48 @@
 
 .btn-starred-sm:hover {
   background: #30363d;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.card-actions-sm {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-browse,
+.btn-browse-main,
+.btn-browse-sm {
+  padding: 5px 12px;
+  background: #238636;
+  color: white;
+  border: 1px solid #2ea043;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-browse:hover,
+.btn-browse-main:hover,
+.btn-browse-sm:hover {
+  background: #2ea043;
+}
+
+.btn-browse-main {
+  border-color: #238636;
+}
+
+.btn-browse-sm {
+  padding: 3px 8px;
 }
 
 @media (max-width: 1024px) {

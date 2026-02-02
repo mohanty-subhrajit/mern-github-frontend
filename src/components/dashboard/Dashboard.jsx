@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import API_URL from '../../config/api';
 import "./dashboard.css";
@@ -6,6 +7,7 @@ import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -125,6 +127,34 @@ const Dashboard = () => {
     }
   };
 
+  const handleDeleteRepo = async (repoId, repoName) => {
+    const confirmed = window.confirm(
+      `Are you sure you want to delete "${repoName}"?\n\nThis will permanently delete:\n- The repository\n- All commits and files\n- All issues\n- This action cannot be undone!`
+    );
+
+    if (!confirmed) return;
+
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await axios.delete(
+        `${API_URL}/repo/delete/${repoId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      // Remove from local state
+      setRepositories(repositories.filter((repo) => repo._id !== repoId));
+      alert(response.data.message || "Repository deleted successfully!");
+    } catch (err) {
+      console.error("Error deleting repo:", err);
+      alert(err.response?.data?.error || "Failed to delete repository!");
+    }
+  };
+
   return (
     <>
       <Navbar toggleSidebar={toggleSidebar} />
@@ -142,12 +172,20 @@ const Dashboard = () => {
                     <div key={repo._id} className="suggested-repo-card">
                       <h4 className="repo-title">{repo.name}</h4>
                       <p className="repo-desc">{repo.description || "No description"}</p>
-                      <button
-                        onClick={() => handleStarRepo(repo._id)}
-                        className={isStarred ? "btn-starred" : "btn-star"}
-                      >
-                        {isStarred ? "⭐ Starred" : "☆ Star"}
-                      </button>
+                      <div className="card-actions">
+                        <button
+                          onClick={() => navigate(`/repo/${repo._id}`)}
+                          className="btn-browse"
+                        >
+                          📂 Browse
+                        </button>
+                        <button
+                          onClick={() => handleStarRepo(repo._id)}
+                          className={isStarred ? "btn-starred" : "btn-star"}
+                        >
+                          {isStarred ? "⭐ Starred" : "☆ Star"}
+                        </button>
+                      </div>
                     </div>
                   );
                 })}
@@ -173,16 +211,28 @@ const Dashboard = () => {
                 </div>
                 <div className="repo-actions">
                   <button
-                    onClick={() => window.location.href = `/repo/${repo._id}/commits`}
+                    onClick={() => navigate(`/repo/${repo._id}`)}
+                    className="btn-browse-main"
+                  >
+                    📂 Browse
+                  </button>
+                  <button
+                    onClick={() => navigate(`/repo/${repo._id}/commits`)}
                     className="btn-commits"
                   >
                     📝 Commits
                   </button>
                   <button
-                    onClick={() => window.location.href = `/repo/${repo._id}/issues`}
+                    onClick={() => navigate(`/repo/${repo._id}/issues`)}
                     className="btn-issues"
                   >
                     Issues
+                  </button>
+                  <button
+                    onClick={() => handleDeleteRepo(repo._id, repo.name)}
+                    className="btn-delete"
+                  >
+                    🗑️ Delete
                   </button>
                 </div>
               </div>
@@ -213,12 +263,20 @@ const Dashboard = () => {
                       <h5 className="repo-title">{repo.name}</h5>
                       <p className="repo-desc">{repo.description}</p>
                       <p className="repo-owner">By: {repo.owner?.username}</p>
-                      <button
-                        onClick={() => handleStarRepo(repo._id)}
-                        className={isStarred ? "btn-starred-sm" : "btn-star-sm"}
-                      >
-                        {isStarred ? "⭐ Starred" : "☆ Star"}
-                      </button>
+                      <div className="card-actions-sm">
+                        <button
+                          onClick={() => navigate(`/repo/${repo._id}`)}
+                          className="btn-browse-sm"
+                        >
+                          📂 Browse
+                        </button>
+                        <button
+                          onClick={() => handleStarRepo(repo._id)}
+                          className={isStarred ? "btn-starred-sm" : "btn-star-sm"}
+                        >
+                          {isStarred ? "⭐ Starred" : "☆ Star"}
+                        </button>
+                      </div>
                     </div>
                   );
                 })}

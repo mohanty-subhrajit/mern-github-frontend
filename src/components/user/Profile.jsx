@@ -90,6 +90,34 @@ const Profile = () => {
     fetchConnections();
   }, []);
 
+  const handleDeleteRepo = async (repoId, repoName) => {
+    const confirmed = window.confirm(
+      `Are you sure you want to delete "${repoName}"?\n\nThis will permanently delete:\n- The repository\n- All commits and files\n- All issues\n- This action cannot be undone!`
+    );
+
+    if (!confirmed) return;
+
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await axios.delete(
+        `${API_URL}/repo/delete/${repoId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      // Remove from local state
+      setStarredRepos(starredRepos.filter((repo) => repo._id !== repoId));
+      alert(response.data.message || "Repository deleted successfully!");
+    } catch (err) {
+      console.error("Error deleting repo:", err);
+      alert(err.response?.data?.error || err.response?.data?.message || "Failed to delete repository!");
+    }
+  };
+
   return (
     <>
       <Navbar toggleSidebar={toggleSidebar} />
@@ -184,13 +212,26 @@ const Profile = () => {
                 <p className="empty-state">No starred repositories yet.</p>
               ) : (
                 <div className="repo-card-wrapper">
-                  {starredRepos.map((repo) => (
+                  {starredRepos.map((repo) => {
+                    const currentUserId = localStorage.getItem("userId");
+                    const isOwner = repo.owner?._id === currentUserId || repo.owner === currentUserId;
+                    
+                    return (
                     <div key={repo._id} className="repo">
                       <h4 className="repo-name">{repo.name}</h4>
                       <p className="description">{repo.description || "No description"}</p>
                       <small className="visibility">Visibility: {repo.visibility ? "Public" : "Private"}</small>
+                      {isOwner && (
+                        <button
+                          className="btn-delete-profile"
+                          onClick={() => handleDeleteRepo(repo._id, repo.name)}
+                          style={{ marginTop: '10px' }}
+                        >
+                          🗑️ Delete
+                        </button>
+                      )}
                     </div>
-                  ))}
+                  )})}
                 </div>
               )}
             </div>

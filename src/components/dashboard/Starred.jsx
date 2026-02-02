@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import API_URL from '../../config/api';
 import Navbar from "../Navbar";
@@ -9,6 +10,7 @@ const Starred = () => {
   const [starredRepos, setStarredRepos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
@@ -61,6 +63,34 @@ const Starred = () => {
     }
   };
 
+  const handleDeleteRepo = async (repoId, repoName) => {
+    const confirmed = window.confirm(
+      `Are you sure you want to delete "${repoName}"?\n\nThis will permanently delete:\n- The repository\n- All commits and files\n- All issues\n- This action cannot be undone!`
+    );
+
+    if (!confirmed) return;
+
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await axios.delete(
+        `${API_URL}/repo/delete/${repoId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      // Remove from local state
+      setStarredRepos(starredRepos.filter((repo) => repo._id !== repoId));
+      alert(response.data.message || "Repository deleted successfully!");
+    } catch (err) {
+      console.error("Error deleting repo:", err);
+      alert(err.response?.data?.error || err.response?.data?.message || "Failed to delete repository!");
+    }
+  };
+
   return (
     <>
       <Navbar toggleSidebar={toggleSidebar} />
@@ -85,7 +115,11 @@ const Starred = () => {
               </div>
             ) : (
               <div className="repos-list">
-                {starredRepos.map((repo) => (
+                {starredRepos.map((repo) => {
+                  const currentUserId = localStorage.getItem("userId");
+                  const isOwner = repo.owner?._id === currentUserId || repo.owner === currentUserId;
+                  
+                  return (
                   <div key={repo._id} className="repo-card">
                     <div className="repo-header">
                       <h3 className="repo-title">{repo.name}</h3>
@@ -98,14 +132,28 @@ const Starred = () => {
                     )}
                     <div className="repo-actions">
                       <button
+                        className="btn-browse"
+                        onClick={() => navigate(`/repo/${repo._id}`)}
+                      >
+                        📂 Browse
+                      </button>
+                      <button
                         className="btn-unstar"
                         onClick={() => handleUnstar(repo._id)}
                       >
                         ⭐ Unstar
                       </button>
+                      {isOwner && (
+                        <button
+                          className="btn-delete"
+                          onClick={() => handleDeleteRepo(repo._id, repo.name)}
+                        >
+                          🗑️ Delete
+                        </button>
+                      )}
                     </div>
                   </div>
-                ))}
+                )})}
               </div>
             )}
           </div>

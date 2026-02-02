@@ -11,6 +11,7 @@ import CreateIssue from "./components/issues/CreateIssue";
 import IssueDetail from "./components/issues/IssueDetail";
 import Starred from "./components/dashboard/Starred";
 import CreateRepository from "./components/repository/CreateRepository";
+import RepositoryBrowser from "./components/repository/RepositoryBrowser";
 import CommitHistory from "./components/commits/CommitHistory";
 import CommitDetail from "./components/commits/CommitDetail";
 
@@ -62,6 +63,10 @@ const ProjectRoutes = ()=>{
         {
             path:"/create-repository",
             element:<CreateRepository/>
+        },
+        {
+            path:"/repo/:repoId",
+            element:<RepositoryBrowser/>
         },
         {
             path:"/repo/:repoId/commits",
